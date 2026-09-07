@@ -9,18 +9,19 @@ class MyFirstWindow(QMainWindow):
         self.setWindowTitle("Whack-a-mole")
         self.setFixedSize(500, 500)
 
-        self.board = [[None for _ in range(3)] for _ in range(3)]
+        self.board = [[None for _ in range(4)] for _ in range(4)]
 
         grid_layout = QGridLayout()
         self.buttons = []
-        for row in range(3):
+        for row in range(4):
             row_buttons = []
-            for col in range(3):
-                button = QPushButton(f"({row}, {col})")
+            for col in range(4):
+                button = QPushButton()
                 grid_layout.addWidget(button, row, col)
                 row_buttons.append(button)
                 button.clicked.connect(lambda clicked, r=row, c=col: self.button_clicked(r, c))
-                button.setFixedSize(75, 75)
+                button.setFixedSize(75, 60)
+                button.setStyleSheet("QPushButton { background-color: #808080; }")
             self.buttons.append(row_buttons)
 
 
